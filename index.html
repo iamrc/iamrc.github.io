@@ -436,9 +436,11 @@
       
         
           
-            <h3 id="首先，你要有个Mono环境，在Ubuntu环境下，输入命令："><a href="#首先，你要有个Mono环境，在Ubuntu环境下，输入命令：" class="headerlink" title="首先，你要有个Mono环境，在Ubuntu环境下，输入命令："></a>首先，你要有个Mono环境，在Ubuntu环境下，输入命令：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install mono-complete</div></pre></td></tr></table></figure>
+            <h1 id="Fiddler工作原理"><a href="#Fiddler工作原理" class="headerlink" title="Fiddler工作原理"></a>Fiddler工作原理</h1><p>Fiddler的工作原理就是 内建一个代理，作为客户端和网络的中介。在Fiddler启动后，会自动添加一个 IP 为127.0.0.1（回路）端口号为8888的系统代理</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h3 id="首先，你要有个Mono环境，在Ubuntu环境下，输入命令："><a href="#首先，你要有个Mono环境，在Ubuntu环境下，输入命令：" class="headerlink" title="首先，你要有个Mono环境，在Ubuntu环境下，输入命令："></a>首先，你要有个Mono环境，在Ubuntu环境下，输入命令：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install mono-complete</div></pre></td></tr></table></figure>
 <h3 id="其次，下载一个最新的Fiddler-for-Mono版本-并解压"><a href="#其次，下载一个最新的Fiddler-for-Mono版本-并解压" class="headerlink" title="其次，下载一个最新的Fiddler for Mono版本,并解压"></a>其次，下载一个最新的Fiddler for Mono版本,并解压</h3><h3 id="最后，输入命令启动fiddler"><a href="#最后，输入命令启动fiddler" class="headerlink" title="最后，输入命令启动fiddler"></a>最后，输入命令启动fiddler</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mono Fiddler.exe</div></pre></td></tr></table></figure>
 <p>好了，fiddler可以正常使用了</p>
+<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><p>有一个问题就是 Fiddler非正常退出后（比如你直接关闭终端kill掉进程），默认情况下并不会删除配置。那么就导致了，一些浏览器还是指向这个代理，但是这个代理由于Fiddler已经关闭，所以就不会起作用了。这时你需要修改浏览器配置的服务器代理项，设置为不使用任何代理</p>
 
           
         

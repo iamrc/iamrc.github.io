@@ -84,22 +84,22 @@
 
 
 
-<meta name="description" content="首先，你要有个Mono环境，在Ubuntu环境下，输入命令：1$ sudo apt-get install mono-complete
-其次，下载一个最新的Fiddler for Mono版本,并解压最后，输入命令启动fiddler1$ mono Fiddler.exe
-好了，fiddler可以正常使用了">
+<meta name="description" content="Fiddler工作原理Fiddler的工作原理就是 内建一个代理，作为客户端和网络的中介。在Fiddler启动后，会自动添加一个 IP 为127.0.0.1（回路）端口号为8888的系统代理
+安装首先，你要有个Mono环境，在Ubuntu环境下，输入命令：1$ sudo apt-get install mono-complete
+其次，下载一个最新的Fiddler for Mono版本,并解压最后">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ubuntu下安装fiddler">
 <meta property="og:url" content="http://yoursite.com/2017/03/01/ubuntu下安装fiddler/index.html">
 <meta property="og:site_name" content="RC'S BLOG">
-<meta property="og:description" content="首先，你要有个Mono环境，在Ubuntu环境下，输入命令：1$ sudo apt-get install mono-complete
-其次，下载一个最新的Fiddler for Mono版本,并解压最后，输入命令启动fiddler1$ mono Fiddler.exe
-好了，fiddler可以正常使用了">
-<meta property="og:updated_time" content="2017-03-01T13:31:49.704Z">
+<meta property="og:description" content="Fiddler工作原理Fiddler的工作原理就是 内建一个代理，作为客户端和网络的中介。在Fiddler启动后，会自动添加一个 IP 为127.0.0.1（回路）端口号为8888的系统代理
+安装首先，你要有个Mono环境，在Ubuntu环境下，输入命令：1$ sudo apt-get install mono-complete
+其次，下载一个最新的Fiddler for Mono版本,并解压最后">
+<meta property="og:updated_time" content="2017-03-02T14:44:18.748Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu下安装fiddler">
-<meta name="twitter:description" content="首先，你要有个Mono环境，在Ubuntu环境下，输入命令：1$ sudo apt-get install mono-complete
-其次，下载一个最新的Fiddler for Mono版本,并解压最后，输入命令启动fiddler1$ mono Fiddler.exe
-好了，fiddler可以正常使用了">
+<meta name="twitter:description" content="Fiddler工作原理Fiddler的工作原理就是 内建一个代理，作为客户端和网络的中介。在Fiddler启动后，会自动添加一个 IP 为127.0.0.1（回路）端口号为8888的系统代理
+安装首先，你要有个Mono环境，在Ubuntu环境下，输入命令：1$ sudo apt-get install mono-complete
+其次，下载一个最新的Fiddler for Mono版本,并解压最后">
 
 
 
@@ -317,9 +317,11 @@
       
 
       
-        <h3 id="首先，你要有个Mono环境，在Ubuntu环境下，输入命令："><a href="#首先，你要有个Mono环境，在Ubuntu环境下，输入命令：" class="headerlink" title="首先，你要有个Mono环境，在Ubuntu环境下，输入命令："></a>首先，你要有个Mono环境，在Ubuntu环境下，输入命令：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install mono-complete</div></pre></td></tr></table></figure>
+        <h1 id="Fiddler工作原理"><a href="#Fiddler工作原理" class="headerlink" title="Fiddler工作原理"></a>Fiddler工作原理</h1><p>Fiddler的工作原理就是 内建一个代理，作为客户端和网络的中介。在Fiddler启动后，会自动添加一个 IP 为127.0.0.1（回路）端口号为8888的系统代理</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h3 id="首先，你要有个Mono环境，在Ubuntu环境下，输入命令："><a href="#首先，你要有个Mono环境，在Ubuntu环境下，输入命令：" class="headerlink" title="首先，你要有个Mono环境，在Ubuntu环境下，输入命令："></a>首先，你要有个Mono环境，在Ubuntu环境下，输入命令：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install mono-complete</div></pre></td></tr></table></figure>
 <h3 id="其次，下载一个最新的Fiddler-for-Mono版本-并解压"><a href="#其次，下载一个最新的Fiddler-for-Mono版本-并解压" class="headerlink" title="其次，下载一个最新的Fiddler for Mono版本,并解压"></a>其次，下载一个最新的Fiddler for Mono版本,并解压</h3><h3 id="最后，输入命令启动fiddler"><a href="#最后，输入命令启动fiddler" class="headerlink" title="最后，输入命令启动fiddler"></a>最后，输入命令启动fiddler</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mono Fiddler.exe</div></pre></td></tr></table></figure>
 <p>好了，fiddler可以正常使用了</p>
+<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><p>有一个问题就是 Fiddler非正常退出后（比如你直接关闭终端kill掉进程），默认情况下并不会删除配置。那么就导致了，一些浏览器还是指向这个代理，但是这个代理由于Fiddler已经关闭，所以就不会起作用了。这时你需要修改浏览器配置的服务器代理项，设置为不使用任何代理</p>
 
       
     </div>
@@ -464,7 +466,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先，你要有个Mono环境，在Ubuntu环境下，输入命令："><span class="nav-number">1.</span> <span class="nav-text">首先，你要有个Mono环境，在Ubuntu环境下，输入命令：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其次，下载一个最新的Fiddler-for-Mono版本-并解压"><span class="nav-number">2.</span> <span class="nav-text">其次，下载一个最新的Fiddler for Mono版本,并解压</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后，输入命令启动fiddler"><span class="nav-number">3.</span> <span class="nav-text">最后，输入命令启动fiddler</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Fiddler工作原理"><span class="nav-number">1.</span> <span class="nav-text">Fiddler工作原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先，你要有个Mono环境，在Ubuntu环境下，输入命令："><span class="nav-number">2.0.1.</span> <span class="nav-text">首先，你要有个Mono环境，在Ubuntu环境下，输入命令：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其次，下载一个最新的Fiddler-for-Mono版本-并解压"><span class="nav-number">2.0.2.</span> <span class="nav-text">其次，下载一个最新的Fiddler for Mono版本,并解压</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后，输入命令启动fiddler"><span class="nav-number">2.0.3.</span> <span class="nav-text">最后，输入命令启动fiddler</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意"><span class="nav-number">3.</span> <span class="nav-text">注意</span></a></li></ol></div>
             
 
           </div>
