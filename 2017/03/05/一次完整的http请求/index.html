@@ -84,16 +84,22 @@
 
 
 
-<meta name="description" content="一、域名解析二、三次握手">
+<meta name="description" content="一，安装mysql如果是windows 用户，mysql 的安装非常简单，直接下载安装文件，双击安装文件一步一步进行操作即可。
+Linux 下的安装可能会更加简单，除了下载安装包进行安装外，一般的linux 仓库中都会有mysql ，我们只需要通过一个命令就可以下载安装：
+123456789Ubuntu\deepin&amp;gt;&amp;gt;sudo apt-get install mysql-server">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一次完整的http请求">
+<meta property="og:title" content="python连接mysql数据库">
 <meta property="og:url" content="http://yoursite.com/2017/03/05/一次完整的http请求/index.html">
 <meta property="og:site_name" content="RC'S BLOG">
-<meta property="og:description" content="一、域名解析二、三次握手">
-<meta property="og:updated_time" content="2017-03-05T12:52:00.852Z">
+<meta property="og:description" content="一，安装mysql如果是windows 用户，mysql 的安装非常简单，直接下载安装文件，双击安装文件一步一步进行操作即可。
+Linux 下的安装可能会更加简单，除了下载安装包进行安装外，一般的linux 仓库中都会有mysql ，我们只需要通过一个命令就可以下载安装：
+123456789Ubuntu\deepin&amp;gt;&amp;gt;sudo apt-get install mysql-server">
+<meta property="og:updated_time" content="2017-03-16T15:05:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一次完整的http请求">
-<meta name="twitter:description" content="一、域名解析二、三次握手">
+<meta name="twitter:title" content="python连接mysql数据库">
+<meta name="twitter:description" content="一，安装mysql如果是windows 用户，mysql 的安装非常简单，直接下载安装文件，双击安装文件一步一步进行操作即可。
+Linux 下的安装可能会更加简单，除了下载安装包进行安装外，一般的linux 仓库中都会有mysql ，我们只需要通过一个命令就可以下载安装：
+123456789Ubuntu\deepin&amp;gt;&amp;gt;sudo apt-get install mysql-server">
 
 
 
@@ -127,7 +133,7 @@
 
 
 
-  <title> 一次完整的http请求 | RC'S BLOG </title>
+  <title> python连接mysql数据库 | RC'S BLOG </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -262,7 +268,7 @@
             
             
               
-                一次完整的http请求
+                python连接mysql数据库
               
             
           </h1>
@@ -311,7 +317,17 @@
       
 
       
-        <h1 id="一、域名解析"><a href="#一、域名解析" class="headerlink" title="一、域名解析"></a>一、域名解析</h1><h1 id="二、三次握手"><a href="#二、三次握手" class="headerlink" title="二、三次握手"></a>二、三次握手</h1>
+        <h1 id="一，安装mysql"><a href="#一，安装mysql" class="headerlink" title="一，安装mysql"></a>一，安装mysql</h1><p>如果是windows 用户，mysql 的安装非常简单，直接下载安装文件，双击安装文件一步一步进行操作即可。</p>
+<p>Linux 下的安装可能会更加简单，除了下载安装包进行安装外，一般的linux 仓库中都会有mysql ，我们只需要通过一个命令就可以下载安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Ubuntu\deepin</div><div class="line"></div><div class="line">&gt;&gt;sudo apt-get install mysql-server </div><div class="line"></div><div class="line">&gt;&gt;Sudo apt-get install  mysql-client</div><div class="line"></div><div class="line">centOS/redhat</div><div class="line"></div><div class="line">&gt;&gt;yum install mysql</div></pre></td></tr></table></figure>
+<h1 id="二，安装MySQL-python"><a href="#二，安装MySQL-python" class="headerlink" title="二，安装MySQL-python"></a>二，安装MySQL-python</h1><p>要想使python可以操作mysql 就需要MySQL-python驱动，它是python 操作mysql必不可少的模块。</p>
+<p>下载地址：<a href="https://pypi.python.org/pypi/MySQL-python/" target="_blank" rel="external">https://pypi.python.org/pypi/MySQL-python/</a></p>
+<p>下载MySQL-python-1.2.5.zip 文件之后直接解压。进入MySQL-python-1.2.5目录:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;python setup.py install</div></pre></td></tr></table></figure>
+<h1 id="三，测试"><a href="#三，测试" class="headerlink" title="三，测试"></a>三，测试</h1><p>测试非常简单，检查MySQLdb 模块是否可以正常导入。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">fnngj@fnngj-H24X:~/pyse$ python </div><div class="line">Python 2.7.4 (default, Sep 26 2013, 03:20:56) </div><div class="line">[GCC 4.7.3] on linux2</div><div class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</div><div class="line">&gt;&gt;&gt; import MySQLdb</div></pre></td></tr></table></figure>
+<p>没有报错提示MySQLdb模块找不到，说明安装OK </p>
+
       
     </div>
 
@@ -451,7 +467,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、域名解析"><span class="nav-number">1.</span> <span class="nav-text">一、域名解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、三次握手"><span class="nav-number">2.</span> <span class="nav-text">二、三次握手</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一，安装mysql"><span class="nav-number">1.</span> <span class="nav-text">一，安装mysql</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二，安装MySQL-python"><span class="nav-number">2.</span> <span class="nav-text">二，安装MySQL-python</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三，测试"><span class="nav-number">3.</span> <span class="nav-text">三，测试</span></a></li></ol></div>
             
 
           </div>
