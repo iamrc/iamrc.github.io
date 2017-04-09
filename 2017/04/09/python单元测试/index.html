@@ -1,0 +1,618 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="单元测试概念单元测试（unit test）是用来对一个模块、函数或者类来进行检查和验证，通常由开发人员完成。
+比如对求绝对值函数abs()，我们可以编写出以下几个测试用例：    输入    正数，比如0.05、1、2.3，期待返回值与输入相同；    负数，比如-0.2、-1、-1.2，期待返回值与输入相反；    0，期待返回0；    输入非数值类型，比如None、[]、{}，期待抛出Typ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python单元测试">
+<meta property="og:url" content="http://yoursite.com/2017/04/09/python单元测试/index.html">
+<meta property="og:site_name" content="RC'S BLOG">
+<meta property="og:description" content="单元测试概念单元测试（unit test）是用来对一个模块、函数或者类来进行检查和验证，通常由开发人员完成。
+比如对求绝对值函数abs()，我们可以编写出以下几个测试用例：    输入    正数，比如0.05、1、2.3，期待返回值与输入相同；    负数，比如-0.2、-1、-1.2，期待返回值与输入相反；    0，期待返回0；    输入非数值类型，比如None、[]、{}，期待抛出Typ">
+<meta property="og:updated_time" content="2017-04-09T10:02:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python单元测试">
+<meta name="twitter:description" content="单元测试概念单元测试（unit test）是用来对一个模块、函数或者类来进行检查和验证，通常由开发人员完成。
+比如对求绝对值函数abs()，我们可以编写出以下几个测试用例：    输入    正数，比如0.05、1、2.3，期待返回值与输入相同；    负数，比如-0.2、-1、-1.2，期待返回值与输入相反；    0，期待返回0；    输入非数值类型，比如None、[]、{}，期待抛出Typ">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/09/python单元测试/"/>
+
+
+
+
+
+  <title> python单元测试 | RC'S BLOG </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">RC'S BLOG</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/09/python单元测试/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="rc">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="RC'S BLOG">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="RC'S BLOG" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                python单元测试
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-09T17:36:11+08:00">
+                2017-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="单元测试概念"><a href="#单元测试概念" class="headerlink" title="单元测试概念"></a>单元测试概念</h1><pre><code>单元测试（unit test）是用来对一个模块、函数或者类来进行检查和验证，通常由开发人员完成。
+</code></pre><p>比如对求绝对值函数abs()，我们可以编写出以下几个测试用例：<br>    输入<br>    正数，比如0.05、1、2.3，期待返回值与输入相同；<br>    负数，比如-0.2、-1、-1.2，期待返回值与输入相反；<br>    0，期待返回0；<br>    输入非数值类型，比如None、[]、{}，期待抛出TypeError。<br>把上面的测试用例放到一个测试模块里，就是一个完整的单元测试。<br>如果单元测试通过，说明我们测试的这个函数能够正常工作。如果单元测试不通过，要么函数有bug，要么测试条件输入不正确，总之，需要修复使单元测试能够通过。<br>单元测试通过后有什么意义呢？如果我们对abs()函数代码做了修改，只需要再跑一遍单元测试，如果通过，说明我们的修改不会对abs()函数原有的行为造成影响，如果测试不通过，说明我们的修改与原有行为不一致，要么修改代码，要么修改测试。<br>这种以测试为驱动的开发模式最大的好处就是确保一个程序模块的行为符合我们设计的测试用例。在将来修改的时候，可以极大程度地保证该模块行为仍然是正确的。</p>
+<h1 id="编写单元测试"><a href="#编写单元测试" class="headerlink" title="编写单元测试"></a>编写单元测试</h1><p>我们来编写一个Dict类，这个类的行为和dict一致，但是可以通过属性来访问，用起来就像下面这样：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>d = Dict(a=<span class="number">1</span>, b=<span class="number">2</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="string">'a'</span>]</div><div class="line"><span class="number">1</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d.a</div><div class="line"><span class="number">1</span></div></pre></td></tr></table></figure></p>
+<p>mydict.py代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dict</span><span class="params">(dict)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, **kw)</span>:</span></div><div class="line">        super(Dict, self).__init__(**kw)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, key)</span>:</span></div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            <span class="keyword">return</span> self[key]</div><div class="line">        <span class="keyword">except</span> KeyError:</div><div class="line">            <span class="keyword">raise</span> AttributeError(<span class="string">r"'Dict' object has no attribute '%s'"</span> % key)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setattr__</span><span class="params">(self, key, value)</span>:</span></div><div class="line">        self[key] = value</div></pre></td></tr></table></figure>
+<p>为了编写单元测试，我们需要引入Python自带的unittest模块，编写mydict_test.py如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> unittest</div><div class="line"></div><div class="line"><span class="keyword">from</span> mydict <span class="keyword">import</span> Dict</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestDict</span><span class="params">(unittest.TestCase)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_init</span><span class="params">(self)</span>:</span></div><div class="line">        d = Dict(a=<span class="number">1</span>, b=<span class="string">'test'</span>)</div><div class="line">        self.assertEquals(d.a, <span class="number">1</span>)</div><div class="line">        self.assertEquals(d.b, <span class="string">'test'</span>)</div><div class="line">        self.assertTrue(isinstance(d, dict))</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_key</span><span class="params">(self)</span>:</span></div><div class="line">        d = Dict()</div><div class="line">        d[<span class="string">'key'</span>] = <span class="string">'value'</span></div><div class="line">        self.assertEquals(d.key, <span class="string">'value'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_attr</span><span class="params">(self)</span>:</span></div><div class="line">        d = Dict()</div><div class="line">        d.key = <span class="string">'value'</span></div><div class="line">        self.assertTrue(<span class="string">'key'</span> <span class="keyword">in</span> d)</div><div class="line">        self.assertEquals(d[<span class="string">'key'</span>], <span class="string">'value'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_keyerror</span><span class="params">(self)</span>:</span></div><div class="line">        d = Dict()</div><div class="line">        <span class="keyword">with</span> self.assertRaises(KeyError):</div><div class="line">            value = d[<span class="string">'empty'</span>]</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_attrerror</span><span class="params">(self)</span>:</span></div><div class="line">        d = Dict()</div><div class="line">        <span class="keyword">with</span> self.assertRaises(AttributeError):</div><div class="line">            value = d.empty</div></pre></td></tr></table></figure>
+<p>编写单元测试时，我们需要编写一个测试类，从unittest.TestCase继承。<br>以test开头的方法就是测试方法，不以test开头的方法不被认为是测试方法，测试的时候不会被执行。<br>对每一类测试都需要编写一个test_xxx()方法。由于unittest.TestCase提供了很多内置的条件判断，我们只需要调用这些方法就可以断言输出是否是我们所期望的。最常用的断言就是assertEquals()：<br>self.assertEquals(abs(-1), 1) # 断言函数返回的结果与1相等<br>另一种重要的断言就是期待抛出指定类型的Error，比如通过d[‘empty’]访问不存在的key时，断言会抛出KeyError：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> self.assertRaises(KeyError):</div><div class="line">    value = d[<span class="string">'empty'</span>]</div></pre></td></tr></table></figure></p>
+<p>而通过d.empty访问不存在的key时，我们期待抛出AttributeError：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> self.assertRaises(AttributeError):</div><div class="line">    value = d.empty</div></pre></td></tr></table></figure></p>
+<h1 id="运行单元测试"><a href="#运行单元测试" class="headerlink" title="运行单元测试"></a>运行单元测试</h1><p>一旦编写好单元测试，我们就可以运行单元测试。最简单的运行方式是在mydict_test.py的最后加上两行代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    unittest.main()</div></pre></td></tr></table></figure></p>
+<p>这样就可以把mydict_test.py当做正常的python脚本运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ python mydict_test.py</div></pre></td></tr></table></figure></p>
+<p>另一种更常见的方法是在命令行通过参数-m unittest直接运行单元测试：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ python -m unittest mydict_test</div><div class="line">.....</div><div class="line">----------------------------------------------------------------------</div><div class="line">Ran <span class="number">5</span> tests <span class="keyword">in</span> <span class="number">0.000</span>s</div><div class="line"></div><div class="line">OK</div></pre></td></tr></table></figure></p>
+<p>这是推荐的做法，因为这样可以一次批量运行很多单元测试，并且，有很多工具可以自动来运行这些单元测试。</p>
+<h1 id="setUp与tearDown"><a href="#setUp与tearDown" class="headerlink" title="setUp与tearDown"></a>setUp与tearDown</h1><p>可以在单元测试中编写两个特殊的setUp()和tearDown()方法。这两个方法会分别在每调用一个测试方法的前后分别被执行。</p>
+<p>setUp()和tearDown()方法有什么用呢？设想你的测试需要启动一个数据库，这时，就可以在setUp()方法中连接数据库，在tearDown()方法中关闭数据库，这样，不必在每个测试方法中重复相同的代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestDict</span><span class="params">(unittest.TestCase)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setUp</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">'setUp...'</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tearDown</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">'tearDown...'</span></div></pre></td></tr></table></figure></p>
+<p>可以再次运行测试看看每个测试方法调用前后是否会打印出setUp…和tearDown…。</p>
+<p>#小结</p>
+<p>单元测试可以有效地测试某个程序模块的行为，是未来重构代码的信心保证。<br>单元测试的测试用例要覆盖常用的输入组合、边界条件和异常。<br>单元测试代码要非常简单，如果测试代码太复杂，那么测试代码本身就可能有bug。<br>单元测试通过了并不意味着程序就没有bug了，但是不通过程序肯定有bug。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/05/一次完整的http请求/" rel="next" title="python连接mysql数据库">
+                <i class="fa fa-chevron-left"></i> python连接mysql数据库
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="rc" />
+          <p class="site-author-name" itemprop="name">rc</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单元测试概念"><span class="nav-number">1.</span> <span class="nav-text">单元测试概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编写单元测试"><span class="nav-number">2.</span> <span class="nav-text">编写单元测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运行单元测试"><span class="nav-number">3.</span> <span class="nav-text">运行单元测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#setUp与tearDown"><span class="nav-number">4.</span> <span class="nav-text">setUp与tearDown</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rc</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
